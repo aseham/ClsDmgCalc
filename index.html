@@ -9,8 +9,13 @@
   <p class="title_text">
     Please note: This damage calculations formula is a rough calculation<br>
     and is not directly taken from the game script.<br>
-    Use final calculation result only for estimation purpose.<br>
-    <br>
+    Use final calculation result only for estimation purpose.
+  </p>
+  <p class="spoiler">
+    But of course, it's more accurate than your DPS output in your character info.
+  </p>
+    
+  <p class="title_text">  
     If there are bugs or errors, please send a detailed report to me here.<br>
   </p>
   
@@ -22,133 +27,183 @@
             Base Damage
           </td>
           <td class="datas" valign=top>
-            Damage Bonus (%)
+            <input type=text name=dmg></input>
           </td>
-          <td class="datas" valign=top>
-            Critical Rate (%)
-          </td>
-          <td class="datas" valign=top>
-            Critical Damage (%)
-          </td>
-          <td class="datas" valign=top>
-            Def Penetration (%)
-          </td>
-          <td class="datas" valign=top>
-            Ignore Defense
+          <td></td>
+          <td align=center valign=center colspan=6>
+            Situationals
           </td>
         </tr>
         <tr>
           <td class="datas" valign=top>
-            <input type=text name=dmg></input>
-          </td>
-          <td class="datas" valign=top>
-            <input type=text name=dmg_bonus></input>
-          </td>
-          <td class="datas" valign=top>
-            <input type=text name=crate></input>
-          </td>
-          <td class="datas" valign=top>
-            <input type=text name=cdmg></input>
-          </td>
-          <td class="datas" valign=top>
-            <input type=text name=penet></input>
+            Ignore Def
           </td>
           <td class="datas" valign=top>
             <input type=text name=ignore_def></input>
           </td>
+          <td></td>
+          <td align=center valign=center colspan=2>
+            <input type=checkbox name=_aerial>Aerial</input>
+          </td>
+          <td align=center valign=center colspan=2>
+            <input type=checkbox name=_back>Back</input>
+          </td>
+          <td align=center valign=center colspan=2>
+            <input type=checkbox name=_chase>Chase</input>
+          </td>
         </tr>
         <tr>
-          <td valign=top rowspan = 6>
-            <br>
-            Situationals:<br>
-            <input type=checkbox name=_aerial>Aerial</input><br>
-            <input type=checkbox name=_back>Back</input><br>
-            <input type=checkbox name=_chase>Chase</input><br>
+          <td class="datas" valign=top>
+            Damage Bonus (%)
           </td>
+          <td class="datas" valign=top>
+            <input type=text name=dmg_bonus></input>
+          </td>
+          <td></td>
           <td class="datas" valign=top>
             Aerial Damage Bonus (%)
           </td>
           <td class="datas" valign=top>
-            Aerial Critical Rate (%)
+            <input type=text name=a_dmg_bonus></input>
           </td>
           <td class="datas" valign=top>
-            Aerial Critical Damage (%)
+            Back Damage Bonus (%)
           </td>
           <td class="datas" valign=top>
-            Aerial Def Penetration (%)
+            <input type=text name=b_dmg_bonus></input>
+          </td>
+          <td class="datas" valign=top>
+            Chase Damage Bonus (%)
+          </td>
+          <td class="datas" valign=top>
+            <input type=text name=c_dmg_bonus></input>
           </td>
         </tr>
+        
         <tr>
           <td class="datas" valign=top>
-            <input type=text name=a_dmg_bonus></input>
+            Critical Rate (%)
+          </td>
+          <td class="datas" valign=top>
+            <input type=text name=crate></input>
+          </td>
+          <td></td>
+          <td class="datas" valign=top>
+            Aerial Critical Rate (%)
           </td>
           <td class="datas" valign=top>
             <input type=text name=a_crate></input>
           </td>
           <td class="datas" valign=top>
-            <input type=text name=a_cdmg></input>
-          </td>
-          <td class="datas" valign=top>
-            <input type=text name=a_penet></input>
-          </td>
-        </tr>
-        <tr>
-          <td class="datas" valign=top>
-            Back Damage Bonus (%)
-          </td>
-          <td class="datas" valign=top>
             Back Critical Rate (%)
-          </td>
-          <td class="datas" valign=top>
-            Back Critical Damage (%)
-          </td>
-          <td class="datas" valign=top>
-            Back Def Penetration (%)
-          </td>
-        </tr>
-        <tr>
-          <td class="datas" valign=top>
-            <input type=text name=b_dmg_bonus></input>
           </td>
           <td class="datas" valign=top>
             <input type=text name=b_crate></input>
           </td>
           <td class="datas" valign=top>
-            <input type=text name=b_cdmg></input>
+            Chase Critical Rate (%)
           </td>
           <td class="datas" valign=top>
-            <input type=text name=b_penet></input>
+            <input type=text name=c_crate></input>
           </td>
         </tr>
+        
         <tr>
           <td class="datas" valign=top>
-            Chase Damage Bonus (%)
+            Critical Damage (%)
           </td>
           <td class="datas" valign=top>
-            Chase Critical Rate (%)
+            <input type=text name=cdmg></input>
+          </td>
+          <td></td>
+          <td class="datas" valign=top>
+            Aerial Critical Damage (%)
+          </td>
+          <td class="datas" valign=top>
+            <input type=text name=a_cdmg></input>
+          </td>
+          <td class="datas" valign=top>
+            Back Critical Damage (%)
+          </td>
+          <td class="datas" valign=top>
+            <input type=text name=b_cdmg></input>
           </td>
           <td class="datas" valign=top>
             Chase Critical Damage (%)
           </td>
           <td class="datas" valign=top>
-            Chase Def Penetration (%)
+            <input type=text name=c_cdmg></input>
           </td>
         </tr>
+        
         <tr>
           <td class="datas" valign=top>
-            <input type=text name=c_dmg_bonus></input>
+            Def Penetration (%)
           </td>
           <td class="datas" valign=top>
-            <input type=text name=c_crate></input>
+            <input type=text name=penet></input>
+          </td>
+          <td></td>
+          <td class="datas" valign=top>
+            Aerial Def Penetration (%)
           </td>
           <td class="datas" valign=top>
-            <input type=text name=c_cdmg></input>
+            <input type=text name=a_penet></input>
+          </td>
+          <td class="datas" valign=top>
+            Back Def Penetration (%)
+          </td>
+          <td class="datas" valign=top>
+            <input type=text name=b_penet></input>
+          </td>
+          <td class="datas" valign=top>
+            Chase Def Penetration (%)
           </td>
           <td class="datas" valign=top>
             <input type=text name=c_penet></input>
           </td>
         </tr>
       </table>
+      <hr>
+      <table  align=center>
+        <tr>
+          <td class="datas" valign=top colspan=3>
+            Total Damage Output per 100 hit, excluding Penetrations:
+          </td>
+          <td class="results" valign=top colspan=6>
+            0
+          </td>
+        </tr>
+        <tr>
+          <td class="datas" valign=top>
+            Final Score:
+          </td>
+          <td class="results" valign=top colspan=8>
+            0
+          </td>
+        </tr>
+        <tr>
+          <td class="datas" valign=top>
+            Final Rating:
+          </td>
+          <td class="results" valign=top colspan=4>
+            F-
+          </td>
+          <td class="datas" valign=top colspan=4>
+            Base rating:
+            <select name="rate_base">
+              <option value="KR">KR (under development)</option>
+              <option value="JP">JP</option>
+              <option value="ID">ID</option>
+              <option value="CN">CN (under development)</option>
+              <option value="PS">PS</option>
+            </select>
+          </td>
+          
+        </tr>
+        
+      </table>
+      
     </div>
   </p>
   
