@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="index.css">
 </head>
 
-<body onload="start()">
+<body onload="Start()">
   <p class="title_text">
     Please note: This damage calculations formula is a rough calculation<br>
     and is not directly taken from the game script.<br>
@@ -215,19 +215,52 @@
   var crate = 0;
   var cdmg = 0;
   
+  var isAerial;
+  var isBack;
+  var isChase;
+  
   var total;
 
-	function start() {
+	function Start() {
 		var myVar = setInterval(dmgOut100Hit, 10);
 	}
-	
+  
+  function situationalCheck() {
+    //aerial
+    isAerial = document.getElementsByName("_aerial")[0].checked;
+    document.getElementsByName("a_dmg_bonus")[0].disabled = !isAerial;
+    document.getElementsByName("a_crate")[0].disabled = !isAerial;
+    document.getElementsByName("a_cdmg")[0].disabled = !isAerial;
+    document.getElementsByName("a_penet")[0].disabled = !isAerial;
+    //back
+    isBack = document.getElementsByName("_back")[0].checked;
+    document.getElementsByName("b_dmg_bonus")[0].disabled = !isBack;
+    document.getElementsByName("b_crate")[0].disabled = !isBack;
+    document.getElementsByName("b_cdmg")[0].disabled = !isBack;
+    document.getElementsByName("b_penet")[0].disabled = !isBack;
+    //chase
+    isChase = document.getElementsByName("_chase")[0].checked;
+    document.getElementsByName("c_dmg_bonus")[0].disabled = !isChase;
+    document.getElementsByName("c_crate")[0].disabled = !isChase;
+    document.getElementsByName("c_cdmg")[0].disabled = !isChase;
+    document.getElementsByName("c_penet")[0].disabled = !isChase;
+  }
+  
   function fetchData() {
 		base_dmg = parseFloat(document.getElementsByName("dmg")[0].value);
     crate = parseFloat(document.getElementsByName("crate")[0].value);
     cdmg = parseFloat(document.getElementsByName("cdmg")[0].value);
   }
   
-  function dmgOut100Hit(){
+  function bool2Int(x) {
+    if (x)
+      return 1;
+    else
+      return 0;
+  }
+  
+  function dmgOut100Hit() {
+    situationalCheck();
     fetchData();
     total = (base_dmg + (crate*0.01) * (cdmg*0.01) * base_dmg) * 100;
     if (isNaN(total))
