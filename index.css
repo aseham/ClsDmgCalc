@@ -13,6 +13,14 @@
   src: url('fonts/UbuntuMono-R.ttf');
 }
 
+html { 
+  background: url('images/bg.png') no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
 p {
   padding-left:5%;
   padding-right:5%;
@@ -20,14 +28,14 @@ p {
 
 p.title_text {
   text-align: center;
-  color: blue;
+  color: #00f3f3;
   font-size: 22px;
   font-family: 'Ubuntu1';
 }
 
 p.spoiler {
   text-align: center;
-  color: black;
+  color: white;
   font-size: 11px;
   font-family: 'Ubuntu1';
 }
@@ -58,15 +66,17 @@ td{
   padding-left:0%;
   padding-right:2%;
   padding-top:3px;
+  color: white;
 }
 
 td.datas {
   text-align: left;
   vertical-align: middle;
 }
+
 td.results {
   text-align: left;
   vertical-align: middle;
-  font-size: 18px;
+  font-size: 22px;
   font-weight: bold;
 }

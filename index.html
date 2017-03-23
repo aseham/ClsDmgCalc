@@ -170,7 +170,7 @@
           <td class="datas" valign=top colspan=3>
             Total Damage Output per 100 hit, excluding Penetrations:
           </td>
-          <td class="results" valign=top colspan=6>
+          <td class="results" id="dmg_out" valign=top colspan=6>
             0
           </td>
         </tr>
@@ -178,7 +178,7 @@
           <td class="datas" valign=top>
             Final Score:
           </td>
-          <td class="results" valign=top colspan=8>
+          <td class="results" id="score" valign=top colspan=8>
             0
           </td>
         </tr>
@@ -186,7 +186,7 @@
           <td class="datas" valign=top>
             Final Rating:
           </td>
-          <td class="results" valign=top colspan=4>
+          <td class="results" id="rating" valign=top colspan=4>
             F-
           </td>
           <td class="datas" valign=top colspan=4>
@@ -208,4 +208,80 @@
   </p>
   
 </body>
+
+<script type="text/javascript">
+  var base_dmg = document.getElementByName("dmg").innerHTML;
+  
+  function dmgOut100Hit(){
+    
+  }
+
+	function start() {
+		n_clix = 1;
+		aps = 0;
+		apples = 0;
+		total_apples = 0;
+		apple_tree = 0;  apple_tree_cost = 100;
+		magic_seed = 0;  magic_seed_cost = 1000;
+		printApple();
+		printAsset();
+		var myVar = setInterval(addPerSecond, 1000);
+	}
+	
+	function addByClick() {
+		apples += n_clix;
+		total_apples += n_clix;
+		printApple();
+		printAsset();
+	}
+	
+	function addPerSecond() {
+		apples += aps;
+		total_apples += aps;
+		printApple();
+		printAsset();
+	}
+	
+	function printApple() {
+		document.getElementById("cauntaah").innerHTML = "Apples : " + Math.floor(apples) + 
+		"<br>Auto-apples : " + aps + " apples/seconds" +
+		"<br>Apples per click : " + n_clix + " apples";
+	}
+	
+	function printAsset() {
+	if (total_apples >= 100)
+		document.getElementById("apple_tree").innerHTML = "<a href=\"#\" onClick=\"buyAppleTree(); return false;\">Buy apple tree</a>"+
+		"<br>Cost : "+apple_tree_cost+
+		"<br>Apple trees owned : "+apple_tree+"<br>";
+	if (total_apples >= 2500)
+		document.getElementById("magic_seed").innerHTML = "<a href=\"#\" onClick=\"buyMagicSeed(); return false;\">Buy magic seed</a>"+
+		"<br>Cost : "+magic_seed_cost+
+		"<br>Magic seeds owned : "+magic_seed+"<br>";
+	}
+	
+	function buyAppleTree() {
+		if (apples >= apple_tree_cost) {
+			apples -= apple_tree_cost;
+			apple_tree_cost *= 105/100;
+			apple_tree_cost = Math.ceil(apple_tree_cost);
+			apple_tree++;
+			aps += 1;
+		}
+		printApple();
+		printAsset();
+	}
+	
+	function buyMagicSeed() {
+		if (apples >= magic_seed_cost) {
+			apples -= magic_seed_cost;
+			magic_seed_cost *= 105/100;
+			magic_seed_cost = Math.ceil(magic_seed_cost);
+			magic_seed++;
+			n_clix += 2;
+		}
+		printApple();
+		printAsset();
+	}
+	</script>
+
 </html>
