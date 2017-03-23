@@ -5,7 +5,7 @@
   <link rel="stylesheet" href="index.css">
 </head>
 
-<body>
+<body onload="start()">
   <p class="title_text">
     Please note: This damage calculations formula is a rough calculation<br>
     and is not directly taken from the game script.<br>
@@ -27,7 +27,7 @@
             Base Damage
           </td>
           <td class="datas" valign=top>
-            <input type=text name=dmg></input>
+            <input type=text name=dmg value=0></input>
           </td>
           <td></td>
           <td align=center valign=center colspan=6>
@@ -39,17 +39,17 @@
             Ignore Def
           </td>
           <td class="datas" valign=top>
-            <input type=text name=ignore_def></input>
+            <input type=text name=ignore_def value=0></input>
           </td>
           <td></td>
           <td align=center valign=center colspan=2>
-            <input type=checkbox name=_aerial>Aerial</input>
+            <input type=checkbox name=_aerial checked>Aerial</input>
           </td>
           <td align=center valign=center colspan=2>
-            <input type=checkbox name=_back>Back</input>
+            <input type=checkbox name=_back checked>Back</input>
           </td>
           <td align=center valign=center colspan=2>
-            <input type=checkbox name=_chase>Chase</input>
+            <input type=checkbox name=_chase checked>Chase</input>
           </td>
         </tr>
         <tr>
@@ -57,26 +57,26 @@
             Damage Bonus (%)
           </td>
           <td class="datas" valign=top>
-            <input type=text name=dmg_bonus></input>
+            <input type=text name=dmg_bonus value=0></input>
           </td>
           <td></td>
           <td class="datas" valign=top>
             Aerial Damage Bonus (%)
           </td>
           <td class="datas" valign=top>
-            <input type=text name=a_dmg_bonus></input>
+            <input type=text name=a_dmg_bonus value=0></input>
           </td>
           <td class="datas" valign=top>
             Back Damage Bonus (%)
           </td>
           <td class="datas" valign=top>
-            <input type=text name=b_dmg_bonus></input>
+            <input type=text name=b_dmg_bonus value=0></input>
           </td>
           <td class="datas" valign=top>
             Chase Damage Bonus (%)
           </td>
           <td class="datas" valign=top>
-            <input type=text name=c_dmg_bonus></input>
+            <input type=text name=c_dmg_bonus value=0></input>
           </td>
         </tr>
         
@@ -85,26 +85,26 @@
             Critical Rate (%)
           </td>
           <td class="datas" valign=top>
-            <input type=text name=crate></input>
+            <input type=text name=crate value=0></input>
           </td>
           <td></td>
           <td class="datas" valign=top>
             Aerial Critical Rate (%)
           </td>
           <td class="datas" valign=top>
-            <input type=text name=a_crate></input>
+            <input type=text name=a_crate value=0></input>
           </td>
           <td class="datas" valign=top>
             Back Critical Rate (%)
           </td>
           <td class="datas" valign=top>
-            <input type=text name=b_crate></input>
+            <input type=text name=b_crate value=0></input>
           </td>
           <td class="datas" valign=top>
             Chase Critical Rate (%)
           </td>
           <td class="datas" valign=top>
-            <input type=text name=c_crate></input>
+            <input type=text name=c_crate value=0></input>
           </td>
         </tr>
         
@@ -113,26 +113,26 @@
             Critical Damage (%)
           </td>
           <td class="datas" valign=top>
-            <input type=text name=cdmg></input>
+            <input type=text name=cdmg value=0></input>
           </td>
           <td></td>
           <td class="datas" valign=top>
             Aerial Critical Damage (%)
           </td>
           <td class="datas" valign=top>
-            <input type=text name=a_cdmg></input>
+            <input type=text name=a_cdmg value=0></input>
           </td>
           <td class="datas" valign=top>
             Back Critical Damage (%)
           </td>
           <td class="datas" valign=top>
-            <input type=text name=b_cdmg></input>
+            <input type=text name=b_cdmg value=0></input>
           </td>
           <td class="datas" valign=top>
             Chase Critical Damage (%)
           </td>
           <td class="datas" valign=top>
-            <input type=text name=c_cdmg></input>
+            <input type=text name=c_cdmg value=0></input>
           </td>
         </tr>
         
@@ -141,26 +141,26 @@
             Def Penetration (%)
           </td>
           <td class="datas" valign=top>
-            <input type=text name=penet></input>
+            <input type=text name=penet value=0></input>
           </td>
           <td></td>
           <td class="datas" valign=top>
             Aerial Def Penetration (%)
           </td>
           <td class="datas" valign=top>
-            <input type=text name=a_penet></input>
+            <input type=text name=a_penet value=0></input>
           </td>
           <td class="datas" valign=top>
             Back Def Penetration (%)
           </td>
           <td class="datas" valign=top>
-            <input type=text name=b_penet></input>
+            <input type=text name=b_penet value=0></input>
           </td>
           <td class="datas" valign=top>
             Chase Def Penetration (%)
           </td>
           <td class="datas" valign=top>
-            <input type=text name=c_penet></input>
+            <input type=text name=c_penet value=0></input>
           </td>
         </tr>
       </table>
@@ -171,7 +171,7 @@
             Total Damage Output per 100 hit, excluding Penetrations:
           </td>
           <td class="results" id="dmg_out" valign=top colspan=6>
-            0
+            
           </td>
         </tr>
         <tr>
@@ -194,7 +194,7 @@
             <select name="rate_base">
               <option value="KR">KR (under development)</option>
               <option value="JP">JP</option>
-              <option value="ID">ID</option>
+              <option value="ID" selected>ID</option>
               <option value="CN">CN (under development)</option>
               <option value="PS">PS</option>
             </select>
@@ -210,78 +210,30 @@
 </body>
 
 <script type="text/javascript">
-  var base_dmg = document.getElementByName("dmg").innerHTML;
+  var base_dmg = 0;
+  var crate = 0;
+  var cdmg = 0;
   
-  function dmgOut100Hit(){
-    
-  }
+  var total;
 
 	function start() {
-		n_clix = 1;
-		aps = 0;
-		apples = 0;
-		total_apples = 0;
-		apple_tree = 0;  apple_tree_cost = 100;
-		magic_seed = 0;  magic_seed_cost = 1000;
-		printApple();
-		printAsset();
-		var myVar = setInterval(addPerSecond, 1000);
+		var myVar = setInterval(dmgOut100Hit, 10);
 	}
 	
-	function addByClick() {
-		apples += n_clix;
-		total_apples += n_clix;
-		printApple();
-		printAsset();
-	}
-	
-	function addPerSecond() {
-		apples += aps;
-		total_apples += aps;
-		printApple();
-		printAsset();
-	}
-	
-	function printApple() {
-		document.getElementById("cauntaah").innerHTML = "Apples : " + Math.floor(apples) + 
-		"<br>Auto-apples : " + aps + " apples/seconds" +
-		"<br>Apples per click : " + n_clix + " apples";
-	}
-	
-	function printAsset() {
-	if (total_apples >= 100)
-		document.getElementById("apple_tree").innerHTML = "<a href=\"#\" onClick=\"buyAppleTree(); return false;\">Buy apple tree</a>"+
-		"<br>Cost : "+apple_tree_cost+
-		"<br>Apple trees owned : "+apple_tree+"<br>";
-	if (total_apples >= 2500)
-		document.getElementById("magic_seed").innerHTML = "<a href=\"#\" onClick=\"buyMagicSeed(); return false;\">Buy magic seed</a>"+
-		"<br>Cost : "+magic_seed_cost+
-		"<br>Magic seeds owned : "+magic_seed+"<br>";
-	}
-	
-	function buyAppleTree() {
-		if (apples >= apple_tree_cost) {
-			apples -= apple_tree_cost;
-			apple_tree_cost *= 105/100;
-			apple_tree_cost = Math.ceil(apple_tree_cost);
-			apple_tree++;
-			aps += 1;
-		}
-		printApple();
-		printAsset();
-	}
-	
-	function buyMagicSeed() {
-		if (apples >= magic_seed_cost) {
-			apples -= magic_seed_cost;
-			magic_seed_cost *= 105/100;
-			magic_seed_cost = Math.ceil(magic_seed_cost);
-			magic_seed++;
-			n_clix += 2;
-		}
-		printApple();
-		printAsset();
-	}
+  function fetchData() {
+		base_dmg = parseFloat(document.getElementsByName("dmg")[0].value);
+    crate = parseFloat(document.getElementsByName("crate")[0].value);
+    cdmg = parseFloat(document.getElementsByName("cdmg")[0].value);
+  }
+  
+  function dmgOut100Hit(){
+    fetchData();
+    total = (base_dmg + (crate*0.01) * (cdmg*0.01) * base_dmg) * 100;
+    if (isNaN(total))
+      document.getElementById("dmg_out").innerHTML = 0;
+    else
+      document.getElementById("dmg_out").innerHTML = total;
+  }
 	</script>
 
 </html>
