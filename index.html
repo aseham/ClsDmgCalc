@@ -223,12 +223,15 @@
   var crate = 0;
   var cdmg = 0;
   //aerial
+  var a_dmg_bonus = 0;
   var a_crate = 0;
   var a_cdmg = 0;
   //back
+  var b_dmg_bonus = 0;
   var b_crate = 0;
   var b_cdmg = 0;
   //chase
+  var c_dmg_bonus = 0;
   var c_crate = 0;
   var c_cdmg = 0;
   
@@ -268,6 +271,9 @@
     crate = parseFloat(document.getElementsByName("crate")[0].value);
     cdmg = parseFloat(document.getElementsByName("cdmg")[0].value);
     
+    a_dmg_bonus = parseFloat(document.getElementsByName("a_dmg_bonus")[0].value);
+    b_dmg_bonus = parseFloat(document.getElementsByName("b_dmg_bonus")[0].value);
+    c_dmg_bonus = parseFloat(document.getElementsByName("c_dmg_bonus")[0].value);
     a_crate = parseFloat(document.getElementsByName("a_crate")[0].value);
     b_crate = parseFloat(document.getElementsByName("b_crate")[0].value);
     c_crate = parseFloat(document.getElementsByName("c_crate")[0].value);
