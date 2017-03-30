@@ -13,6 +13,11 @@
   src: url('fonts/UbuntuMono-R.ttf');
 }
 
+@font-face {
+  font-family: 'Nanum';
+  src: url('fonts/Nanum.ttf');
+}
+
 html { 
   background: url('images/bg.png') no-repeat center center fixed; 
   -webkit-background-size: cover;
@@ -37,24 +42,30 @@ p.spoiler {
   text-align: center;
   color: white;
   font-size: 11px;
-  font-family: 'Ubuntu1';
+  font-family: 'Nanum';
 }
 
 div.div_front {
   margin-left:10%;
   margin-right:10%;
   font-size: 12px;
-  font-family: 'Ubuntu2';
+  font-family: 'Nanum';
 }
 
 input {
-  font-family: 'Ubuntu2';
+  font-family: 'Nanum';
   margin-top:10px;
   margin-bottom:10px;
 }
 
 input[type="text"] {
-  width: 50px;
+  width: 45px;
+}
+
+input[type="checkbox"] {
+  vertical-align: middle;
+  position: relative;
+  bottom: 1px;
 }
 
 table {
@@ -79,4 +90,26 @@ td.results {
   vertical-align: middle;
   font-size: 22px;
   font-weight: bold;
+}
+
+select#soflow {
+   -webkit-appearance: button;
+   -webkit-border-radius: 2px;
+   -webkit-box-shadow: 0px 1px 3px rgba(0, 0, 0, 0.1);
+   -webkit-padding-end: 20px;
+   -webkit-padding-start: 2px;
+   -webkit-user-select: none;
+   background-image: url(http://i62.tinypic.com/15xvbd5.png), -webkit-linear-gradient(#FAFAFA, #F4F4F4 40%, #E5E5E5);
+   background-position: 97% center;
+   background-repeat: no-repeat;
+   border: 1px solid #AAA;
+   color: #555;
+   font-size: inherit;
+   font-family: 'Nanum';
+   margin: 3px;
+   overflow: hidden;
+   padding: 5px 10px;
+   text-overflow: ellipsis;
+   white-space: nowrap;
+   width: 300px;
 }

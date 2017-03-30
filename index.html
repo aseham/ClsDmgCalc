@@ -1,6 +1,7 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
+  <meta charset="UTF-8">
   <title>Closers Damage Calculation</title>
   <link rel="stylesheet" href="index.css">
 </head>
@@ -14,14 +15,11 @@
   <p class="spoiler">
     But of course, it's more accurate than your DPS output in your character info.
   </p>
-    
-  <p class="title_text">  
-    If there are bugs or errors, please send a detailed report to me here.<br>
-  </p>
   
   <p> <!--calculations part-->
     <div class="div_front">
-      <table  align=center>
+      <hr>
+      <table align=center>
         <tr>
           <td class="datas" valign=top>
             Base Damage
@@ -43,13 +41,13 @@
           </td>
           <td></td>
           <td align=center valign=center colspan=2>
-            <input type=checkbox name=_aerial checked>Aerial</input>
+            <input type=checkbox name=_aerial checked> Aerial</input>
           </td>
           <td align=center valign=center colspan=2>
-            <input type=checkbox name=_back checked>Back</input>
+            <input type=checkbox name=_back checked> Back</input>
           </td>
           <td align=center valign=center colspan=2>
-            <input type=checkbox name=_chase checked>Chase</input>
+            <input type=checkbox name=_chase checked> Chase</input>
           </td>
         </tr>
         <tr>
@@ -182,27 +180,37 @@
             0
           </td>
         </tr>
-        <!--
+        
          <tr>
           <td class="datas" valign=top>
             Final Rating:
           </td>
-          <td class="results" id="rating" valign=top colspan=4>
+          <td class="results" id="rating" valign=top colspan=2>
             F-
           </td>
-          <td class="datas" valign=top colspan=4>
-            Base rating:
-            <select name="rate_base">
-              <option value="KR">KR (under development)</option>
-              <option value="JP">JP</option>
-              <option value="ID" selected>ID</option>
-              <option value="CN">CN (under development)</option>
-              <option value="PS">PS</option>
+          <td class="datas" valign=top colspan=6>
+            Character:
+            <select name="rate_base" id=soflow>
+              <option value="Seha">Seha / ハルト</option>
+              <option value="Seulbi">Seulbi / ミコト</option>
+              <option value="Yuri">Yuri / ユリ</option>
+              <option value="J">J / ジェイ</option>
+              <option value="Misteltein">Misteltein / ミスティルティン</option>
+              <option value="Nata">Nata / スラッシュ</option>
+              <option value="Levia">Levia / レヴィア</option>
+              <option value="Harpy">Harpy / ハーピー</option>
+              <option value="Tina">Tina / チィナ</option>
+              <option value="Violet">Violet / ヴァイオレット (under development)</option>
             </select>
           </td>
           
         </tr>
-        -->
+        <tr>
+          <td class="datas" valign=top colspan=9>
+            Note that same stats for different characters may have different rating because of their passives.
+          </td>
+        </tr>
+        
       </table>
       
     </div>
@@ -214,12 +222,21 @@
   var base_dmg = 0;
   var crate = 0;
   var cdmg = 0;
+  //aerial
+  var a_crate = 0;
+  var a_cdmg = 0;
+  //back
+  var b_crate = 0;
+  var b_cdmg = 0;
+  //chase
+  var c_crate = 0;
+  var c_cdmg = 0;
   
   var isAerial;
   var isBack;
   var isChase;
   
-  var total;
+  var total_output;
 
 	function Start() {
 		var myVar = setInterval(dmgOut100Hit, 10);
@@ -250,6 +267,13 @@
 		base_dmg = parseFloat(document.getElementsByName("dmg")[0].value);
     crate = parseFloat(document.getElementsByName("crate")[0].value);
     cdmg = parseFloat(document.getElementsByName("cdmg")[0].value);
+    
+    a_crate = parseFloat(document.getElementsByName("a_crate")[0].value);
+    b_crate = parseFloat(document.getElementsByName("b_crate")[0].value);
+    c_crate = parseFloat(document.getElementsByName("c_crate")[0].value);
+    a_cdmg = parseFloat(document.getElementsByName("a_cdmg")[0].value);
+    b_cdmg = parseFloat(document.getElementsByName("b_cdmg")[0].value);
+    c_cdmg = parseFloat(document.getElementsByName("c_cdmg")[0].value);
   }
   
   function bool2Int(x) {
@@ -262,11 +286,13 @@
   function dmgOut100Hit() {
     situationalCheck();
     fetchData();
-    total = (base_dmg + (crate*0.01) * (cdmg*0.01) * base_dmg) * 100;
-    if (isNaN(total))
+    var total_crate = Math.min((crate + bool2Int(isAerial)*a_crate + bool2Int(isBack)*b_crate + bool2Int(isChase)*c_crate),100);
+    var total_cdmg = cdmg + bool2Int(isAerial)*a_cdmg + bool2Int(isBack)*b_cdmg + bool2Int(isChase)*c_cdmg;
+    total_output = (base_dmg + (total_crate*0.01) * (total_cdmg*0.01) * base_dmg) * 100;
+    if (isNaN(total_output))
       document.getElementById("dmg_out").innerHTML = 0;
     else
-      document.getElementById("dmg_out").innerHTML = total;
+      document.getElementById("dmg_out").innerHTML = Math.round(total_output);
   }
 	</script>
 
