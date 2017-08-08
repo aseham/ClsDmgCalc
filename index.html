@@ -13,7 +13,8 @@
     Use final calculation result only for estimation purpose.
   </p>
   <p class="spoiler">
-    But of course, it's more accurate than your DPS output in your character info.
+    I'm sorry, I don't play KR server, and this one is intended for servers who still uses (highly inaccurate) DPS instead of Total Attack.<br>
+    The final score displayed here may be different from KR-calculated score.
   </p>
   
   <p> <!--calculations part-->
@@ -21,25 +22,21 @@
       <hr>
       <table align=center>
         <tr>
-          <td class="datas" valign=top>
-            Base Damage
+          
+          <td align=center valign=center colspan=2>
+            Base Stats
           </td>
-          <td class="datas" valign=top>
-            <input type=text name=dmg value=0></input>
-          </td>
-          <td></td>
-          <td align=center valign=center colspan=6>
+          <td align=center valign=center colspan=8>
             Situationals
           </td>
         </tr>
         <tr>
           <td class="datas" valign=top>
-            Ignore Def
+            
           </td>
           <td class="datas" valign=top>
-            <input type=text name=ignore_def value=0></input>
+            
           </td>
-          <td></td>
           <td align=center valign=center colspan=2>
             <input type=checkbox name=_aerial checked> Aerial</input>
           </td>
@@ -49,15 +46,17 @@
           <td align=center valign=center colspan=2>
             <input type=checkbox name=_chase checked> Chase</input>
           </td>
+          <td align=center valign=center colspan=2>
+            <input type=checkbox name=_phase checked> Phase Power Release</input>
+          </td>
         </tr>
         <tr>
           <td class="datas" valign=top>
-            Damage Bonus (%)
+            Base Damage
           </td>
           <td class="datas" valign=top>
-            <input type=text name=dmg_bonus value=0></input>
+            <input type=text name=dmg value=0></input>
           </td>
-          <td></td>
           <td class="datas" valign=top>
             Aerial Damage Bonus (%)
           </td>
@@ -76,6 +75,12 @@
           <td class="datas" valign=top>
             <input type=text name=c_dmg_bonus value=0></input>
           </td>
+          <td class="datas" valign=top>
+            Phase Power Damage Boost (%)
+          </td>
+          <td class="datas" valign=top>
+            <input type=text name=phase_bonus value=0></input>
+          </td>
         </tr>
         
         <tr>
@@ -85,7 +90,6 @@
           <td class="datas" valign=top>
             <input type=text name=crate value=0></input>
           </td>
-          <td></td>
           <td class="datas" valign=top>
             Aerial Critical Rate (%)
           </td>
@@ -104,6 +108,12 @@
           <td class="datas" valign=top>
             <input type=text name=c_crate value=0></input>
           </td>
+          <td class="datas" valign=top>
+            Skill Level
+          </td>
+          <td class="datas" valign=top>
+            <input type=text name=phase_level value=10></input>
+          </td>
         </tr>
         
         <tr>
@@ -113,7 +123,6 @@
           <td class="datas" valign=top>
             <input type=text name=cdmg value=0></input>
           </td>
-          <td></td>
           <td class="datas" valign=top>
             Aerial Critical Damage (%)
           </td>
@@ -134,81 +143,44 @@
           </td>
         </tr>
         
-        <tr>
-          <td class="datas" valign=top>
-            Def Penetration (%)
-          </td>
-          <td class="datas" valign=top>
-            <input type=text name=penet value=0></input>
-          </td>
-          <td></td>
-          <td class="datas" valign=top>
-            Aerial Def Penetration (%)
-          </td>
-          <td class="datas" valign=top>
-            <input type=text name=a_penet value=0></input>
-          </td>
-          <td class="datas" valign=top>
-            Back Def Penetration (%)
-          </td>
-          <td class="datas" valign=top>
-            <input type=text name=b_penet value=0></input>
-          </td>
-          <td class="datas" valign=top>
-            Chase Def Penetration (%)
-          </td>
-          <td class="datas" valign=top>
-            <input type=text name=c_penet value=0></input>
-          </td>
-        </tr>
       </table>
       <hr>
       <table  align=center>
         <tr>
-          <td class="datas" valign=top colspan=3>
-            Total Damage Output per 100 hit, excluding Penetrations:
+          <td class="datas" valign=top colspan=4>
+            Total Damage Output, excluding Penetrations, Ignore Def, Damage Reduction, and Critical Damage Reduction:
           </td>
-          <td class="results" id="dmg_out" valign=top colspan=6>
+          <td class="results" id="dmg_out" valign=top colspan=5>
             
-          </td>
-        </tr>
-        <tr>
-          <td class="datas" valign=top>
-            Final Score:
-          </td>
-          <td class="results" id="score" valign=top colspan=8>
-            0
           </td>
         </tr>
         
          <tr>
-          <td class="datas" valign=top>
-            Final Rating:
-          </td>
-          <td class="results" id="rating" valign=top colspan=2>
-            F-
-          </td>
           <td class="datas" valign=top colspan=6>
             Character:
             <select name="rate_base" id=soflow>
-              <option value="Seha">Seha / ハルト</option>
-              <option value="Seulbi">Seulbi / ミコト</option>
-              <option value="Yuri">Yuri / ユリ</option>
+              <option value="Seha">Seha / ハルト＝カグラギ</option>
+              <option value="Seulbi">Seulbi / ミコト＝アマミヤ</option>
+              <option value="Yuri">Yuri / ユリ＝アスマ</option>
               <option value="J">J / ジェイ</option>
               <option value="Misteltein">Misteltein / ミスティルティン</option>
               <option value="Nata">Nata / スラッシュ</option>
               <option value="Levia">Levia / レヴィア</option>
               <option value="Harpy">Harpy / ハーピー</option>
               <option value="Tina">Tina / チィナ</option>
-              <option value="Violet">Violet / ヴァイオレット (under development)</option>
+              <option value="Violet">Violet / ヴァイオレット</option>
             </select>
           </td>
           
         </tr>
         <tr>
-          <td class="datas" valign=top colspan=9>
-            Note that same stats for different characters may have different rating because of their skills.
+          <td class="datas" valign=top colspan=6>
+            <b>Additional Note:</b><br>
+            - For hybrid chars, fill in base stats with <i>average</i> of physical and magical stats.<br>
+            - Different characters have different phase power release buff.<br>
+            - Character list only goes up until Violet.
           </td>
+          
         </tr>
         
       </table>
@@ -220,6 +192,7 @@
 
 <script type="text/javascript">
   var base_dmg = 0;
+  var phase_boost = 0;
   var crate = 0;
   var cdmg = 0;
   //aerial
@@ -235,6 +208,7 @@
   var isAerial;
   var isBack;
   var isChase;
+  var isPhase;
   
   var total_output;
 
@@ -248,23 +222,26 @@
     document.getElementsByName("a_dmg_bonus")[0].disabled = !isAerial;
     document.getElementsByName("a_crate")[0].disabled = !isAerial;
     document.getElementsByName("a_cdmg")[0].disabled = !isAerial;
-    document.getElementsByName("a_penet")[0].disabled = !isAerial;
     //back
     isBack = document.getElementsByName("_back")[0].checked;
     document.getElementsByName("b_dmg_bonus")[0].disabled = !isBack;
     document.getElementsByName("b_crate")[0].disabled = !isBack;
     document.getElementsByName("b_cdmg")[0].disabled = !isBack;
-    document.getElementsByName("b_penet")[0].disabled = !isBack;
     //chase
     isChase = document.getElementsByName("_chase")[0].checked;
     document.getElementsByName("c_dmg_bonus")[0].disabled = !isChase;
     document.getElementsByName("c_crate")[0].disabled = !isChase;
     document.getElementsByName("c_cdmg")[0].disabled = !isChase;
-    document.getElementsByName("c_penet")[0].disabled = !isChase;
+    //phase
+    isPhase = document.getElementsByName("_phase")[0].checked;
+    document.getElementsByName("phase_bonus")[0].disabled = !isPhase;
+    document.getElementsByName("phase_level")[0].disabled = !isPhase;
+    
   }
   
   function fetchData() {
 		base_dmg = parseFloat(document.getElementsByName("dmg")[0].value);
+    phase_boost = parseFloat(document.getElementsByName("phase_bonus")[0].value);
     crate = parseFloat(document.getElementsByName("crate")[0].value);
     cdmg = parseFloat(document.getElementsByName("cdmg")[0].value);
     
@@ -288,7 +265,7 @@
     fetchData();
     var total_crate = Math.min((crate + bool2Int(isAerial)*a_crate + bool2Int(isBack)*b_crate + bool2Int(isChase)*c_crate),100);
     var total_cdmg = cdmg + bool2Int(isAerial)*a_cdmg + bool2Int(isBack)*b_cdmg + bool2Int(isChase)*c_cdmg;
-    total_output = (base_dmg + (total_crate*0.01) * (total_cdmg*0.01) * base_dmg) * 100;
+    total_output = (base_dmg + (total_crate*0.01) * (total_cdmg*0.01) * base_dmg);
     if (isNaN(total_output))
       document.getElementById("dmg_out").innerHTML = 0;
     else

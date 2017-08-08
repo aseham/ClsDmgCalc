@@ -75,7 +75,7 @@ table {
 
 td{
   padding-left:0%;
-  padding-right:2%;
+  padding-right:1%;
   padding-top:3px;
   color: white;
 }
@@ -111,5 +111,5 @@ select#soflow {
    padding: 5px 10px;
    text-overflow: ellipsis;
    white-space: nowrap;
-   width: 300px;
+   width: 250px;
 }
