@@ -22,6 +22,7 @@
       <hr>
       <table align=center>
         <tr>
+        
           <td align=center valign=center colspan=2>
             Base Stats
           </td>
@@ -146,8 +147,8 @@
       <hr>
       <table  align=center>
         <tr>
-          <td class="datas" valign=top colspan=4>
-            Total Damage Output, excluding Penetrations, Ignore Def, Damage Reduction, and Critical Damage Reduction:
+          <td class="datas" valign=top colspan=5>
+            Total Damage Output (per 5 hits), excluding Penetrations, Ignore Def, Damage Reduction, and Critical Damage Reduction:
           </td>
           <td class="results" id="dmg_out" valign=top colspan=5>
             
@@ -191,16 +192,19 @@
 
 <script type="text/javascript">
   var base_dmg = 0;
-  var phase_boost = 0;
+  var phase_bonus = 0;
   var crate = 0;
   var cdmg = 0;
   //aerial
+  var a_dmg_bonus = 0;
   var a_crate = 0;
   var a_cdmg = 0;
   //back
+  var b_dmg_bonus = 0;
   var b_crate = 0;
   var b_cdmg = 0;
   //chase
+  var c_dmg_bonus = 0;
   var c_crate = 0;
   var c_cdmg = 0;
   
@@ -240,7 +244,7 @@
   
   function fetchData() {
 		base_dmg = parseFloat(document.getElementsByName("dmg")[0].value);
-    phase_boost = parseFloat(document.getElementsByName("phase_bonus")[0].value);
+    phase_bonus = parseFloat(document.getElementsByName("phase_bonus")[0].value);
     crate = parseFloat(document.getElementsByName("crate")[0].value);
     cdmg = parseFloat(document.getElementsByName("cdmg")[0].value);
     
@@ -250,6 +254,9 @@
     a_cdmg = parseFloat(document.getElementsByName("a_cdmg")[0].value);
     b_cdmg = parseFloat(document.getElementsByName("b_cdmg")[0].value);
     c_cdmg = parseFloat(document.getElementsByName("c_cdmg")[0].value);
+    a_dmg_bonus = parseFloat(document.getElementsByName("a_dmg_bonus")[0].value);
+    b_dmg_bonus = parseFloat(document.getElementsByName("b_dmg_bonus")[0].value);
+    c_dmg_bonus = parseFloat(document.getElementsByName("c_dmg_bonus")[0].value);
   }
   
   function bool2Int(x) {
@@ -264,11 +271,13 @@
     fetchData();
     var total_crate = Math.min((crate + bool2Int(isAerial)*a_crate + bool2Int(isBack)*b_crate + bool2Int(isChase)*c_crate),100);
     var total_cdmg = cdmg + bool2Int(isAerial)*a_cdmg + bool2Int(isBack)*b_cdmg + bool2Int(isChase)*c_cdmg;
-    total_output = (base_dmg + (total_crate*0.01) * (total_cdmg*0.01) * base_dmg);
+    var total_dmg_bonus = base_dmg + bool2Int(isAerial)*a_dmg_bonus + bool2Int(isBack)*b_dmg_bonus + bool2Int(isChase)*c_dmg_bonus + bool2Int(isPhase)*phase_bonus;
+    total_output = (total_dmg_bonus + (total_crate*0.01) * (total_cdmg*0.01) * total_dmg_bonus) * 5;
     if (isNaN(total_output))
       document.getElementById("dmg_out").innerHTML = 0;
     else
       document.getElementById("dmg_out").innerHTML = Math.round(total_output);
+      
   }
 	</script>
 
