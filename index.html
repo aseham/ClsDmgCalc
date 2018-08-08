@@ -10,11 +10,10 @@
   <p class="title_text">
     Please note: This damage calculations formula is a rough calculation<br>
     and is not directly taken from the game script.<br>
-    Use final calculation result only for estimation purpose.
+    It's recommended to open this webpage in your desktop instead of mobile devices.<br>
   </p>
   <p class="spoiler">
-    I'm sorry, I don't play KR server, and this one is intended for servers who still uses (highly inaccurate) DPS instead of Total Attack.<br>
-    The final score displayed here may be different from KR-calculated score.
+    I'm sorry, I don't play KR server, so there's no data regarding Luna Aegis, Soma, and Pai Winchester.
   </p>
   
   <p> <!--calculations part-->
@@ -37,22 +36,22 @@
           <td class="datas" valign=top>
             
           </td>
-          <td align=center valign=center colspan=2>
+          <td valign=center colspan=2>
             <input type=checkbox name=_aerial checked> Aerial</input>
           </td>
-          <td align=center valign=center colspan=2>
+          <td valign=center colspan=2>
             <input type=checkbox name=_back checked> Back</input>
           </td>
-          <td align=center valign=center colspan=2>
+          <td valign=center colspan=2>
             <input type=checkbox name=_chase checked> Chase</input>
           </td>
-          <td align=center valign=center colspan=2>
-            <input type=checkbox name=_phase checked> Phase Power Release</input>
+          <td valign=center colspan=2>
+            <input type=checkbox name=_phase checked> Phase Power Release Activated</input>
           </td>
         </tr>
         <tr>
           <td class="datas" valign=top>
-            Base Damage
+            Raw Damage
           </td>
           <td class="datas" valign=top>
             <input type=text name=dmg value=0></input>
@@ -76,10 +75,10 @@
             <input type=text name=c_dmg_bonus value=0></input>
           </td>
           <td class="datas" valign=top>
-            Phase Power Damage Boost (%)
+            Skill Level
           </td>
           <td class="datas" valign=top>
-            <input type=text name=phase_bonus value=0></input>
+            <input type=text name=phase_level value=10></input>
           </td>
         </tr>
         
@@ -109,10 +108,10 @@
             <input type=text name=c_crate value=0></input>
           </td>
           <td class="datas" valign=top>
-            Skill Level
+            Phase Power Damage Boost (%)
           </td>
           <td class="datas" valign=top>
-            <input type=text name=phase_level value=10></input>
+            <input type=text name=phase_bonus value=0></input>
           </td>
         </tr>
         
@@ -143,24 +142,34 @@
           </td>
         </tr>
         
-      </table>
-      <hr>
-      <table  align=center>
         <tr>
-          <td class="datas" valign=top colspan=5>
-            Total Damage Output, excluding Penetrations, Ignore Def, Damage Reduction, and Critical Damage Reduction:
+          <td class="datas" valign=top>
+            Skill Cooldown (%)
           </td>
-          <td class="results" id="dmg_out" valign=top colspan=5>
-            
+          <td class="datas" valign=top>
+            <input type=text name=cooldown value=0></input>
           </td>
         </tr>
-         <tr>
+        
+        <tr>
+          <td class="datas" valign=top>
+            Attack Speed (%)
+          </td>
+          <td class="datas" valign=top>
+            <input type=text name=cooldown value=0></input>
+          </td>
+        </tr>
+        
+      </table>
+      <hr>
+      <table align=center>
+        <tr>
           <td class="datas" valign=top colspan=6>
             Character:
             <select name="rate_base" id=soflow>
-              <option value="Seha">Seha / ハルト＝カグラギ</option>
-              <option value="Seulbi">Seulbi / ミコト＝アマミヤ</option>
-              <option value="Yuri">Yuri / ユリ＝アスマ</option>
+              <option value="Seha">Lee Seha / ハルト・カグラギ</option>
+              <option value="Seulbi">Lee Seulbi / ミコト・アマミヤ</option>
+              <option value="Yuri">Seo Yuri / ユリ・アスマ</option>
               <option value="J">J / ジェイ</option>
               <option value="Misteltein">Misteltein / ミスティルティン</option>
               <option value="Nata">Nata / スラッシュ</option>
@@ -168,23 +177,44 @@
               <option value="Harpy">Harpy / ハーピー</option>
               <option value="Tina">Tina / チィナ</option>
               <option value="Violet">Violet / ヴァイオレット</option>
+              <option value="Violet">Wolfgang Schneider / ウォルフガング</option>
             </select>
           </td>
-          
         </tr>
+        
+        <tr>
+          <td class="datas" valign=top colspan=5>
+            Total Attack Power, excluding Penetrations, Ignore Def, Damage Reduction, and Critical Damage Reduction:
+          </td>
+          <td class="results" id="dmg_out" valign=top colspan=5>
+            
+          </td>
+        </tr>
+      </table>
+      <hr>
+      <table align=center>
         <tr>
           <td class="datas" valign=top colspan=6>
             <b>Additional Note:</b><br>
-            - For hybrid chars, fill in base stats with <i>average</i> of physical and magical stats.<br>
-            - Different characters have different phase power release buff.<br>
-            - Character list only goes up until Violet.
+            - Character list only goes up until Wolfgang.<br>
+            - For hybrid chars (Yuri and Violet), fill in base stats column with <i>average</i> of physical and magical stats.<br>
+            - For attack speed and raw damage, please enter the one from detailed stats instead of character profile.<br>
+            - Different characters have different phase power release buff <i>and</i> Total Attack Power calculations, so please do not ignore.<br>
+            - Total Critical Rate is capped at 100%. "Total" here means sum of base, aerial, back, and chase critical rate.<br>
+            - Skill Cooldown is capped at 40%. Anything above it will be treated as 40%.<br>
           </td>
           
         </tr>
         
       </table>
+      <hr>
+      
       
     </div>
+  </p>
+  
+  <p align=right class="spoiler">
+    Created by aseham (Yoshiaku). Updated August 2018.
   </p>
   
 </body>
@@ -236,7 +266,6 @@
     document.getElementsByName("c_cdmg")[0].disabled = !isChase;
     //phase
     isPhase = document.getElementsByName("_phase")[0].checked;
-    document.getElementsByName("phase_bonus")[0].disabled = !isPhase;
     document.getElementsByName("phase_level")[0].disabled = !isPhase;
     
   }
